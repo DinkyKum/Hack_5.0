@@ -1,6 +1,7 @@
 const express= require('express');
 const app= express();
 const mongoose = require("mongoose");
+const authRouter = require("./routes/auth");
 
 require('dotenv').config()
 require('./config/db')
@@ -10,7 +11,6 @@ const connectDB=require("./config/db")
 const cookieParser=require('cookie-parser');
 const cors=require('cors')
 
-// const authRouter = require('./routes/auth');
 
 
 const port=process.env.PORT;
@@ -47,6 +47,8 @@ app.get("/", (req, res) => {
   res.send("All is Well!");
 });
 
+// API Routes
+app.use("/", authRouter);
 
 if (isVercel) {
   module.exports = async (req, res) => {

@@ -10,7 +10,6 @@ const companiesSchema= new mongoose.Schema({
         minLength: 3,
     },
 
-
     emailId:{
         type: String,
         required: true,
@@ -37,31 +36,26 @@ const companiesSchema= new mongoose.Schema({
 
     companyDetails:{
         type:mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "CompanyDetails",
     },
 
     complaints:{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Complaints",
     },
 
     resolvers:{
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Resolvers",
     },
 
     employees:{
         type:mongoose.Schema.Types.ObjectId,
-        required: true,
         ref: "Employees",
     },
 
     uniquekey:{
         type: String,
-        required: true,
         unique: true,
         validate(value){
             if(!validator.isStrongPassword(value)){
